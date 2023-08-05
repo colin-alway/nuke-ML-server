@@ -3,7 +3,8 @@ project(MachineLearningPlugins VERSION 1.0.0)
 
 #===------------------------------------------------------------------------===
 # Global settings some based on the external configuration settings
-set( CMAKE_CXX_STANDARD 11 )
+# set( CMAKE_CXX_STANDARD 11 )
+set( CMAKE_CXX_STANDARD 14 ) # Nuke-14 requirement
 set( CMAKE_CXX_EXTENSIONS OFF )
 set( CMAKE_CXX_VISIBILITY_PRESET hidden )
 set( CMAKE_POSITION_INDEPENDENT_CODE True )

@@ -1,6 +1,6 @@
 # Ignore
 .vscode/
-build/
+build/*
 build-Debug/
 
 # Ignore Python compiled files
@@ -24,3 +24,6 @@ checkpoints/
 data/
 serverlocal/
 densepose/
+
+# Exception: modified 'build/' to 'build/*' to get this to work
+!build/BUILD.md
