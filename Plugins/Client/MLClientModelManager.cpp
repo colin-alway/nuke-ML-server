@@ -281,6 +281,11 @@ int MLClientModelManager::getNumOfButtons() const
   return _dynamicButtonValues.size();
 }
 
+int MLClientModelManager::getNumOfMultipleChoices() const
+{
+  return _dynamicMultipleChoices.size();
+}
+
 std::string MLClientModelManager::getDynamicBoolName(int idx)
 {
   return _dynamicBoolNames[idx];
@@ -304,6 +309,11 @@ std::string MLClientModelManager::getDynamicStringName(int idx)
 std::string MLClientModelManager::getDynamicButtonName(int idx)
 {
   return _dynamicButtonNames[idx];
+}
+
+std::string MLClientModelManager::getDynamicMultipleChoiceName(int idx)
+{
+  return _dynamicMultipleChoices[idx].name;
 }
 
 float* MLClientModelManager::getDynamicFloatValue(int idx)
@@ -336,6 +346,16 @@ void MLClientModelManager::setDynamicButtonValue(int idx, int value)
   _dynamicButtonValues[idx] = value;
 }
 
+int* MLClientModelManager::getDynamicMultipleChoiceValue(int idx)
+{
+  return &_dynamicMultipleChoices[idx].value;
+}
+
+const std::vector<std::string>& MLClientModelManager::getDynamicMultipleChoices(int idx) const
+{
+  return _dynamicMultipleChoices[idx].choices;
+}
+
 void MLClientModelManager::clear()
 {
   _dynamicBoolValues.clear();
@@ -349,4 +369,6 @@ void MLClientModelManager::clear()
   _dynamicFloatNames.clear();
   _dynamicStringNames.clear();
   _dynamicButtonNames.clear();
+
+  _dynamicMultipleChoices.clear();
 }

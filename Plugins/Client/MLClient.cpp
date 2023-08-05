@@ -634,6 +634,22 @@ void MLClient::addDynamicKnobs(void* p, Knob_Callback f)
       Button(f, name.c_str(), label.c_str());
       Newline(f, " ");
     }
+    static const char* static_choices[] = {0};
+    for (int i = 0; i < ((MLClient *)p)->getModelManager().getNumOfMultipleChoices(); i++) {
+      std::string name = ((MLClient *)p)->getModelManager().getDynamicMultipleChoiceName(i);
+      std::string label = ((MLClient *)p)->getModelManager().getDynamicMultipleChoiceName(i);
+    // typedef const char* const* ENUM_LABELS;
+      Knob* knob = Enumeration_knob(
+        f,
+        ((MLClient *)p)->getModelManager().getDynamicMultipleChoiceValue(i),
+        static_choices,
+        name.c_str(),
+        label.c_str()
+      );
+      SetFlags(f, Knob::DO_NOT_WRITE);
+      Enumeration_KnobI* knobi = knob->enumerationKnob();
+      knobi->menu();
+    }
   }
 }
 

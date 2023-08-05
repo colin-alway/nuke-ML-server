@@ -67,6 +67,13 @@ class MLClientModelKnob : public DD::Image::Knob
 //! Class to parse and store knobs for a given model.
 class MLClientModelManager
 {
+  private:
+    struct MultipleChoice
+    {
+      std::string name;
+      int value;
+      std::vector<std::string> choices;
+    };
   public:
     explicit MLClientModelManager(DD::Image::Op* parent);
     ~MLClientModelManager();
@@ -77,12 +84,14 @@ class MLClientModelManager
     int getNumOfBools() const;
     int getNumOfStrings() const;
     int getNumOfButtons() const;
+    int getNumOfMultipleChoices() const;
 
     std::string getDynamicBoolName(int idx);
     std::string getDynamicFloatName(int idx);
     std::string getDynamicIntName(int idx);
     std::string getDynamicStringName(int idx);
     std::string getDynamicButtonName(int idx);
+    std::string getDynamicMultipleChoiceName(int idx);
 
     float* getDynamicFloatValue(int idx);
     int* getDynamicIntValue(int idx);
@@ -90,6 +99,8 @@ class MLClientModelManager
     std::string* getDynamicStringValue(int idx);
     bool* getDynamicButtonValue(int idx);
     void setDynamicButtonValue(int idx, int value);
+    int* getDynamicMultipleChoiceValue(int idx);
+    const std::vector<std::string>& getDynamicMultipleChoices(int idx) const;
 
     void clear();
     //! Parse the model options from the ML server.
@@ -109,6 +120,7 @@ class MLClientModelManager
     std::vector<std::string> _dynamicFloatNames;
     std::vector<std::string> _dynamicStringNames;
     std::vector<std::string> _dynamicButtonNames;
+    std::vector<MultipleChoice> _dynamicMultipleChoices;
 };
 
 #endif
