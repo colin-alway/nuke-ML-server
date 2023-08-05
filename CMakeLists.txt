@@ -8,6 +8,7 @@ set( CMAKE_CXX_STANDARD 14 ) # Nuke-14 requirement
 set( CMAKE_CXX_EXTENSIONS OFF )
 set( CMAKE_CXX_VISIBILITY_PRESET hidden )
 set( CMAKE_POSITION_INDEPENDENT_CODE True )
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
 endif()
