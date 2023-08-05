@@ -129,7 +129,11 @@ void MLClientModelKnob::toScriptStrings(MLClientModelManager& mlManager, std::os
   for(int i = 0; i < numFloats; i++) {
     DD::Image::Knob* k = _op->knob(mlManager.getDynamicStringName(i).c_str());
     if(k != nullptr) {
-      out << mlManager.getDynamicStringName(i) << ":" << k->get_text() << ";";
+      const char* val = k->get_text();
+      if(val == nullptr) {
+        val = "";
+      }
+      out << mlManager.getDynamicStringName(i) << ":" << val << ";";
     }
   }
 }
