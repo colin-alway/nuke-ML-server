@@ -21,3 +21,22 @@ add this to source code
 
 add this to CMakeLists.txt
 `set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")`
+
+## download nuke
+
+product downloads
+https://www.foundry.com/products/nuke/download
+
+previous versions
+https://www.foundry.com/products/nuke/download/previous
+
+complete list
+Q100600: Downloading a previous version of Nuke
+https://support.foundry.com/hc/en-us/articles/360019296599
+
+* 14.0v5
+    * https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v5/Nuke14.0v5-linux-x86_64.tgz
+    * https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v5/Nuke14.0v5-win-x86_64.zip
+* 13.2v8
+    * https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v8/Nuke13.2v8-linux-x86_64.tgz
+    * https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v8/Nuke13.2v8-win-x86_64.zip
