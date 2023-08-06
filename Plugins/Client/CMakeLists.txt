@@ -21,8 +21,7 @@ if(NOT NUKE_INSTALL_PATH)
 endif()
 find_library(DDIMAGE_LIBRARY NAME DDImage libDDImage PATHS ${NUKE_INSTALL_PATH})
 if(NOT DDIMAGE_LIBRARY)
-    #message(FATAL_ERROR "DDImage library not found.") # I only have windows dlls installed
-    message(WARNING "DDImage library not found.")
+    message(FATAL_ERROR "DDImage library not found.")
 endif()
 
 # Create MLClient.so shared library
@@ -39,7 +38,7 @@ target_include_directories(MLClient PRIVATE
 
 target_link_libraries(MLClient
     ${PROTOBUF_LIBRARY}
-    #${DDIMAGE_LIBRARY} # I only have windows dlls installed
+    ${DDIMAGE_LIBRARY}
 )
 
 if (WIN32)

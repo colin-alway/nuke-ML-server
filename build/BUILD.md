@@ -1,9 +1,15 @@
 # local build instructions
 
+## install path on windows - will not link correctly
 NUKE_INSTALL_PATH=/mnt/storage/Documents/Nuke14.0v4/
-
 ```
 cmake -DNUKE_INSTALL_PATH=/mnt/storage/Documents/Nuke14.0v4/ ..
+make
+```
+
+## install path on linux
+```
+cmake -DNUKE_INSTALL_PATH=/opt/foundry/Nuke14.0v5/ ..
 make
 ```
 
