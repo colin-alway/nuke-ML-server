@@ -322,30 +322,8 @@ void MLClient::restoreKnobValue(const std::string& knobName, const std::string& 
   // We look for the corresponding knob 
   DD::Image::Knob* paramKnob = knob(knobName.c_str());
   if(paramKnob != nullptr) {
-    // Is this an animation curve?
-    if(value.substr(0, 6) == "{curve") {
-      // This is a curve, we remove the { }
-      std::string curveString = value.substr(1, value.find("}") - 1);
-      paramKnob->set_animation(curveString.c_str(), 0);
-    } 
-    else if(value.substr(0, 1) == "{") {
-      // That's an expression
-      std::string expressionString = value.substr(1, value.find("}") - 1);
-      // If the expression is within double quote, we need to extract it
-      if(expressionString.substr(0, 1) == "\"") {
-        expressionString.erase(0, 1);
-        expressionString = expressionString.substr(0, expressionString.find("\""));
-      } else {
-        // The expression might be followed by keys that we ignore here.
-        if(expressionString.find(" ") != std::string::npos) {
-          expressionString = expressionString.substr(0, expressionString.find(" "));
-        }
-      }
-      paramKnob->set_expression(expressionString.c_str(), 0);
-    }
-    else {
-      // That's one value
-      paramKnob->set_text(value.c_str());
+    if (paramKnob->from_script(value.c_str())) {
+      paramKnob->changed();
     }
   }
 }
